@@ -30,7 +30,8 @@ local desk_display = {
 }
 
 function notify(text)
-    hs.notify.new({title="Hammerspoon", informativeText=text}):send()
+    -- hs.notify.new({title="Hammerspoon", informativeText=text}):send()
+    hs.alert(text)
 end
 
 local lastNumberOfScreens = #hs.screen.allScreens()
@@ -39,19 +40,21 @@ function screenWatcher()
     newNumberOfScreens = #hs.screen.allScreens()
 
     -- FIXME: This is awful if we swap primary screen to the external display. all the windows swap around, pointlessly.
-    if lastNumberOfScreens ~= newNumberOfScreens then
+    -- if lastNumberOfScreens ~= newNumberOfScreens then
         if newNumberOfScreens == 1 then
-            print("Internal Display")
+            notify("Screens changed to Internal Display")
             hs.layout.apply(internal_display)
         elseif newNumberOfScreens == 2 then
-            print("Desk Display")
+            notify("Screens changed to Desk Display")
             hs.layout.apply(desk_display)
         end
-    end
+    -- end
 
     lastNumberOfScreens = newNumberOfScreens
 end
 hs.screen.watcher.new(screenWatcher):start()
+hs.hotkey.bind(ctrlaltcmd, 'S', screenWatcher)
+
 
 hs.hints.showTitleThresh=10
 hs.hotkey.bind(ctrlaltcmd, "H", function() hs.hints.windowHints() end)
@@ -75,6 +78,7 @@ hs.hotkey.bind(ctrlaltcmd, 'RIGHT', function() hs.window.focusedWindow():moveToU
 hs.hotkey.bind(ctrlaltcmd, 'F', function() hs.window.focusedWindow():toggleFullScreen() end)
 
 hs.pathwatcher.new(hs.configdir, hs.reload):start()
-notify("Config loaded")
+notify("Hammerspoon config loaded")
+print("Config loaded")
 
 hs.dockicon.hide()
