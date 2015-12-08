@@ -27,7 +27,7 @@ local desk_display = {
     {"Microsoft Outlook", nil,          display_desk_left, hs.layout.maximized, nil, nil},
     {"Calendar",          nil,          display_desk_left, hs.layout.left50, nil, nil},
     {"Jabber",            nil,          display_desk_left,  hs.layout.maximized, nil, nil},
-    {"Evernote",          nil,          display_desk_right, hs.layout.maximized,   nil, nil},
+    {"Evernote",          nil,          dpisplay_desk_right, hs.layout.maximized,   nil, nil},
     {"iTerm",             nil,          display_desk_right, hs.layout.maximized,   nil, nil},
     {"Google Chrome",     nil,          display_desk_right, hs.layout.maximized,   nil, nil},
 }
