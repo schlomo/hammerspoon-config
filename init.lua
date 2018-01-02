@@ -1,5 +1,14 @@
 require "tabletools"
 
+function get_key_for_value( t, value )
+    for k,v in pairs(t) do
+        if v==value then 
+            return k
+        end
+        return nil
+    end
+end
+
 hs.window.animationDuration=0
 
 -- my magic shortcut base
@@ -59,6 +68,19 @@ end
 hs.screen.watcher.new(screenWatcher):start()
 hs.hotkey.bind(ctrlaltcmd, 'S', screenWatcher)
 
+
+function sleepWatch(eventType)
+	if (eventType == hs.caffeinate.watcher.systemWillSleep) then
+        notify("Going to sleep!")
+        print("Going to sleep!")
+	elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
+        notify("Waking up!")
+        print("Waking up!")
+	end
+end
+
+local sleepWatcher = hs.caffeinate.watcher.new(sleepWatch)
+sleepWatcher:start()
 
 hs.hints.showTitleThresh=10
 hs.hotkey.bind(ctrlaltcmd, "H", function() hs.hints.windowHints() end)
