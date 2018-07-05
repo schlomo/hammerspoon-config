@@ -11,6 +11,29 @@ end
 
 hs.window.animationDuration=0
 
+local yubicoAuthenticator="Yubico Authenticator"
+
+function usbEvent(event)
+    print(table.show(event, "USB Event"))
+    if string.find(event["productName"], "Yubikey NEO") then
+        if event["eventType"] == "added" then
+            print("added Yubikey")
+            if not hs.application.launchOrFocus(yubicoAuthenticator) then
+                notify(yubicoAuthenticator .. " is not installed")
+            end
+        else
+            print("removed Yubikey")
+            local yubicoAuthenticatorApp=hs.application.get(yubicoAuthenticator)
+            if yubicoAuthenticatorApp then
+                yubicoAuthenticatorApp:kill()
+            else
+                print(yubicoAuthenticator .. " is not running")
+            end
+        end
+    end
+end
+hs.usb.watcher.new(usbEvent):start()
+
 -- my magic shortcut base
 local ctrlaltcmd = {"⌃", "⌥", "⌘"}
 -- Define monitor names for layout purposes
