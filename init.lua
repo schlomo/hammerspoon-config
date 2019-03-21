@@ -11,6 +11,15 @@ end
 
 hs.window.animationDuration=0
 
+--[[ 
+keepAwakeId=0
+function keepAwakeTimerAction()
+    print("Keep Awake Timer")
+    keepAwakeId=hs.caffeinate.declareUserActivity(keepAwakeId)
+end
+keepAwakeTimer = hs.timer.new(5, keepAwakeTimerAction, true):start()
+]]
+
 local yubicoAuthenticator="Yubico Authenticator"
 
 function usbEvent(event)
@@ -32,7 +41,9 @@ function usbEvent(event)
         end
     end
 end
-hs.usb.watcher.new(usbEvent):start()
+usbWatcher = hs.usb.watcher.new(usbEvent):start()
+
+
 
 -- my magic shortcut base
 local ctrlaltcmd = {"⌃", "⌥", "⌘"}
