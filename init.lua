@@ -43,7 +43,19 @@ function usbEvent(event)
 end
 usbWatcher = hs.usb.watcher.new(usbEvent):start()
 
-
+function setDockPosition(position)
+    local script = [[
+        tell application "System Events"
+	        tell dock preferences
+		        set properties to {screen edge:]] .. position .. [[}
+	        end tell
+        end tell
+    ]]
+    result = hs.osascript.applescript(script)
+    if not result then
+        print(result)
+    end
+end
 
 -- my magic shortcut base
 local ctrlaltcmd = {"⌃", "⌥", "⌘"}
@@ -90,10 +102,12 @@ function screenWatcher()
     -- if lastNumberOfScreens ~= newNumberOfScreens then
         if newNumberOfScreens == 1 then
             notify("Screens changed to Internal Display")
-            hs.layout.apply(internal_display)
+            -- hs.layout.apply(internal_display)
+            setDockPosition("left")
         elseif newNumberOfScreens == 2 then
             notify("Screens changed to Desk Display")
-            hs.layout.apply(desk_display)
+            -- hs.layout.apply(desk_display)
+            setDockPosition("bottom")
         end
     -- end
 
