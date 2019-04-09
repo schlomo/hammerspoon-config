@@ -151,6 +151,16 @@ hs.hotkey.bind(ctrlaltcmd, 'LEFT', function() hs.window.focusedWindow():moveToUn
 hs.hotkey.bind(ctrlaltcmd, 'RIGHT', function() hs.window.focusedWindow():moveToUnit(hs.layout.right50) end)
 hs.hotkey.bind(ctrlaltcmd, 'F', function() hs.window.focusedWindow():toggleFullScreen() end)
 
+-- microbit foot paddle input volume control
+function setInputVolume(vol)
+    hs.osascript.applescript("set volume input volume " .. vol)
+    notify("Set input volume to " .. vol)
+end
+
+local ctrlaltshift = {"⌃", "⌥", "⇧"}
+hs.hotkey.bind(ctrlaltshift, 'f11', function() setInputVolume(0) end)
+hs.hotkey.bind(ctrlaltshift, 'f12', function() setInputVolume(100) end)
+
 hs.pathwatcher.new(hs.configdir, hs.reload):start()
 notify("Hammerspoon config loaded")
 print("Config loaded")
