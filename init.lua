@@ -101,11 +101,11 @@ function screenWatcher()
     -- FIXME: This is awful if we swap primary screen to the external display. all the windows swap around, pointlessly.
     -- if lastNumberOfScreens ~= newNumberOfScreens then
         if newNumberOfScreens == 1 then
-            notify("Screens changed to Internal Display")
+            -- notify("Screens changed to Internal Display")
             -- hs.layout.apply(internal_display)
             setDockPosition("left")
         elseif newNumberOfScreens == 2 then
-            notify("Screens changed to Desk Display")
+            -- notify("Screens changed to Desk Display")
             -- hs.layout.apply(desk_display)
             setDockPosition("bottom")
         end
