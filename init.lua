@@ -147,9 +147,22 @@ hs.hotkey.bind(ctrlaltcmd, "M", function()
     end
 end)
 
-hs.hotkey.bind(ctrlaltcmd, 'LEFT', function() hs.window.focusedWindow():moveToUnit(hs.layout.left50) end)
-hs.hotkey.bind(ctrlaltcmd, 'RIGHT', function() hs.window.focusedWindow():moveToUnit(hs.layout.right50) end)
-hs.hotkey.bind(ctrlaltcmd, 'F', function() hs.window.focusedWindow():toggleFullScreen() end)
+-- hs.hotkey.bind(ctrlaltcmd, 'LEFT', function() hs.window.focusedWindow():moveToUnit(hs.layout.left50) end)
+-- hs.hotkey.bind(ctrlaltcmd, 'RIGHT', function() hs.window.focusedWindow():moveToUnit(hs.layout.right50) end)
+-- hs.hotkey.bind(ctrlaltcmd, 'F', function() hs.window.focusedWindow():toggleFullScreen() end)
+
+hs.loadSpoon("MiroWindowsManager")
+spoon.MiroWindowsManager:bindHotkeys({
+  up          = {ctrlaltcmd, "up"},
+  down        = {ctrlaltcmd, "down"},
+  left        = {ctrlaltcmd, "left"},
+  right       = {ctrlaltcmd, "right"},
+  fullscreen  = {ctrlaltcmd, "f"},
+  center      = {ctrlaltcmd, "c"},
+  move        = {ctrlaltcmd, "v"},
+  resize      = {ctrlaltcmd, "d" }
+})
+hs.window.animationDuration = 0
 
 -- microbit foot paddle input volume control
 function setInputVolume(vol)

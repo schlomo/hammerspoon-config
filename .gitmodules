@@ -1,0 +1,3 @@
+[submodule "Spoons/miro-windows-manager"]
+	path = Spoons/miro-windows-manager
+	url = https://github.com/matthewfallshaw/miro-windows-manager.git
