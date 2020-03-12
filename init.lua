@@ -39,10 +39,18 @@ function usbEvent(event)
                 print(yubicoAuthenticator .. " is not running")
             end
         end
+    elseif event["productName"] == "CalDigit Thunderbolt 3 Audio" then
+        notify("Docking Station " .. event["eventType"])
+        if event["eventType"] == "added" then
+            hs.wifi.setPower(false) 
+        else
+            hs.wifi.setPower(true) 
+        end
     end
 end
 usbWatcher = hs.usb.watcher.new(usbEvent):start()
 
+-- set dock to "left" or "bottom"
 function setDockPosition(position)
     local script = [[
         tell application "System Events"
@@ -91,12 +99,14 @@ local desk_display = {
 function notify(text)
     -- hs.notify.new({title="Hammerspoon", informativeText=text}):send()
     hs.alert(text)
+    print("Notify " .. text)
 end
 
 local lastNumberOfScreens = #hs.screen.allScreens()
 function screenWatcher()
     print(table.show(hs.screen.allScreens(), "allScreens"))
     newNumberOfScreens = #hs.screen.allScreens()
+    notify(newNumberOfScreens .. " Screens")
 
     -- FIXME: This is awful if we swap primary screen to the external display. all the windows swap around, pointlessly.
     -- if lastNumberOfScreens ~= newNumberOfScreens then
@@ -113,17 +123,15 @@ function screenWatcher()
 
     lastNumberOfScreens = newNumberOfScreens
 end
-hs.screen.watcher.new(screenWatcher):start()
+screenwatcherstart = hs.screen.watcher.new(screenWatcher):start()
 hs.hotkey.bind(ctrlaltcmd, 'S', screenWatcher)
 
 
 function sleepWatch(eventType)
 	if (eventType == hs.caffeinate.watcher.systemWillSleep) then
         notify("Going to sleep!")
-        print("Going to sleep!")
 	elseif (eventType == hs.caffeinate.watcher.systemDidWake) then
         notify("Waking up!")
-        print("Waking up!")
 	end
 end
 
@@ -176,6 +184,5 @@ hs.hotkey.bind(ctrlaltshift, 'f12', function() setInputVolume(100) end)
 
 hs.pathwatcher.new(hs.configdir, hs.reload):start()
 notify("Hammerspoon config loaded")
-print("Config loaded")
 
 hs.dockicon.hide()
