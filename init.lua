@@ -172,6 +172,10 @@ spoon.MiroWindowsManager:bindHotkeys({
 })
 hs.window.animationDuration = 0
 
+hs.loadSpoon("EjectMenu")
+spoon.EjectMenu.notify = true
+spoon.EjectMenu:start()
+
 -- microbit foot paddle input volume control
 function setInputVolume(vol)
     hs.osascript.applescript("set volume input volume " .. vol)
