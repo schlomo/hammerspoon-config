@@ -24,7 +24,7 @@ local yubicoAuthenticator="Yubico Authenticator"
 
 function usbEvent(event)
     print(table.show(event, "USB Event"))
-    if string.find(event["productName"], "Yubikey NEO") then
+    if string.find(string.lower(event["productName"]), "yubikey") then
         if event["eventType"] == "added" then
             print("added Yubikey")
             if not hs.application.launchOrFocus(yubicoAuthenticator) then
