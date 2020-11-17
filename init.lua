@@ -174,6 +174,7 @@ hs.window.animationDuration = 0
 
 hs.loadSpoon("EjectMenu")
 spoon.EjectMenu.notify = true
+spoon.EjectMenu.never_eject = {"/Volumes/GoogleDrive"}
 spoon.EjectMenu:start()
 
 -- microbit foot paddle input volume control
