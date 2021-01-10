@@ -15,3 +15,4 @@ I found these hacks worth remembering:
 * https://tclementdev.com/timemachineeditor/ to limit backups to run at night
 * Amphetamine from app store and https://github.com/x74353/Amphetamine-Enhancer
 * [Virtual Camera Missing After Microsoft Teams Update](https://support.ecamm.com/en/articles/4343963-virtual-camera-missing-after-microsoft-teams-update)
+* [Use local directory for GnuPG sockets](https://wiki.archlinux.org/index.php/GnuPG#IPC_connect_call_failed) to allow storing GnuPG homedir elsewhere
