@@ -11,6 +11,12 @@ end
 
 hs.window.animationDuration=0
 
+function notify(text)
+    -- hs.notify.new({title="Hammerspoon", informativeText=text}):send()
+    hs.alert(text)
+    print("Notify " .. text)
+end
+
 --[[ 
 keepAwakeId=0
 function keepAwakeTimerAction()
@@ -21,6 +27,10 @@ keepAwakeTimer = hs.timer.new(5, keepAwakeTimerAction, true):start()
 ]]
 
 local yubicoAuthenticator="Yubico Authenticator"
+
+function checkUsbForDock(usb)
+    return usb["productName"] == "CalDigit Thunderbolt 3 Audio"
+end
 
 function usbEvent(event)
     print(table.show(event, "USB Event"))
@@ -39,7 +49,7 @@ function usbEvent(event)
                 print(yubicoAuthenticator .. " is not running")
             end
         end
-    elseif event["productName"] == "CalDigit Thunderbolt 3 Audio" then
+    elseif checkUsbForDock(event) then
         notify("Docking Station " .. event["eventType"])
         if event["eventType"] == "added" then
             hs.wifi.setPower(false) 
@@ -48,7 +58,22 @@ function usbEvent(event)
         end
     end
 end
+
+local noDock = true
+for id, data in pairs(hs.usb.attachedDevices()) do
+    -- simulate add event for already attached USB devices when starting
+    data["eventType"] = "added"
+    usbEvent(data)
+    -- if Docking station is not connected then enable Wifi to handle undock during reboot
+    if checkUsbForDock(data) then
+        noDock = false
+    end
+end
+if (noDock) then
+    hs.wifi.setPower(true)
+end
 usbWatcher = hs.usb.watcher.new(usbEvent):start()
+
 
 -- set dock to "left" or "bottom"
 function setDockPosition(position)
@@ -96,11 +121,6 @@ local desk_display = {
     {"IntelliJ IDEA",     nil,          display_desk_right, hs.layout.maximized, nil, nil},
 }
 
-function notify(text)
-    -- hs.notify.new({title="Hammerspoon", informativeText=text}):send()
-    hs.alert(text)
-    print("Notify " .. text)
-end
 
 local lastNumberOfScreens = #hs.screen.allScreens()
 function screenWatcher()
