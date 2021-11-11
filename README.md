@@ -19,6 +19,7 @@ I found these hacks worth remembering:
 * [Webcam Settings](https://apps.apple.com/app/webcam-settings/id533696630)
 * [Display Menu](https://apps.apple.com/de/app/display-menu/id549083868)
 * [Color Slurp](https://apps.apple.com/de/app/colorslurp/id1287239339)
+* [noTunes]() to disable iTunes & Apple Music, `brew install --cask notunes`
 
 Missing / Discontinued:
 * [Annotate](https://www.macupdate.com/app/mac/48844/annotate), 
