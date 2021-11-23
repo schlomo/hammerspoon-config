@@ -20,6 +20,7 @@ I found these hacks worth remembering:
 * [Display Menu](https://apps.apple.com/de/app/display-menu/id549083868)
 * [Color Slurp](https://apps.apple.com/de/app/colorslurp/id1287239339)
 * [noTunes]() to disable iTunes & Apple Music, `brew install --cask notunes`
+* [Clock Screen Saver](https://github.com/soffes/Clock.saver) to show a clock while in meetings. `brew install clock-saver` failed with a checksum mismatch, had to compile myself via XCode
 
 Missing / Discontinued:
 * [Annotate](https://www.macupdate.com/app/mac/48844/annotate), 
