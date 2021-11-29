@@ -9,6 +9,10 @@ function get_key_for_value( t, value )
     end
 end
 
+function tableHasKey(table,key)
+    return table[key] ~= nil
+end
+
 hs.window.animationDuration=0
 
 function notify(text)
@@ -31,33 +35,37 @@ local yubicoAuthenticator="Yubico Authenticator"
 function checkUsbForDock(usb)
     -- return usb["productName"] == "CalDigit Thunderbolt 3 Audio"
     -- return usb["vendorName"] == "StarTech.com"
-    return false
+    return usb["productName"] == "AX88179" -- Landing Zone
 end
 
 function usbEvent(event)
     print(table.show(event, "USB Event"))
-    if string.find(string.lower(event["productName"]), "yubikey") then
-        if event["eventType"] == "added" then
-            print("added Yubikey")
-            if not hs.application.launchOrFocus(yubicoAuthenticator) then
-                notify(yubicoAuthenticator .. " is not installed")
-            end
-        else
-            print("removed Yubikey")
-            local yubicoAuthenticatorApp=hs.application.get(yubicoAuthenticator)
-            if yubicoAuthenticatorApp then
-                yubicoAuthenticatorApp:kill()
+    if tableHasKey(event, "productName") then
+        if string.find(string.lower(event["productName"]), "yubikey") then
+            if event["eventType"] == "added" then
+                print("added Yubikey")
+                if not hs.application.launchOrFocus(yubicoAuthenticator) then
+                    notify(yubicoAuthenticator .. " is not installed")
+                end
             else
-                print(yubicoAuthenticator .. " is not running")
+                print("removed Yubikey")
+                local yubicoAuthenticatorApp=hs.application.get(yubicoAuthenticator)
+                if yubicoAuthenticatorApp then
+                    yubicoAuthenticatorApp:kill()
+                else
+                    print(yubicoAuthenticator .. " is not running")
+                end
+            end
+        elseif checkUsbForDock(event) then
+            notify("Docking Station " .. event["eventType"])
+            if event["eventType"] == "added" then
+                hs.wifi.setPower(false) 
+            else
+                hs.wifi.setPower(true) 
             end
         end
-    elseif checkUsbForDock(event) then
-        notify("Docking Station " .. event["eventType"])
-        if event["eventType"] == "added" then
-            hs.wifi.setPower(false) 
-        else
-            hs.wifi.setPower(true) 
-        end
+    else
+        print("USB device without productName, ignoring")
     end
 end
 
