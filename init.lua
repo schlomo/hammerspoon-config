@@ -33,9 +33,10 @@ keepAwakeTimer = hs.timer.new(5, keepAwakeTimerAction, true):start()
 local yubicoAuthenticator="Yubico Authenticator"
 
 function checkUsbForDock(usb)
-    -- return usb["productName"] == "CalDigit Thunderbolt 3 Audio"
+    return 
+        (usb["productName"] == "CalDigit Thunderbolt 3 Audio") or -- CalDigit
+        (usb["productName"] == "AX88179") -- Landing Zone
     -- return usb["vendorName"] == "StarTech.com"
-    return usb["productName"] == "AX88179" -- Landing Zone
 end
 
 function usbEvent(event)
