@@ -19,7 +19,7 @@ I found these hacks worth remembering:
 * [Webcam Settings](https://apps.apple.com/app/webcam-settings/id533696630)
 * [Display Menu](https://apps.apple.com/de/app/display-menu/id549083868)
 * [Color Slurp](https://apps.apple.com/de/app/colorslurp/id1287239339)
-* [noTunes]() to disable iTunes & Apple Music, `brew install --cask notunes`
+* [noTunes](https://github.com/tombonez/noTunes) to disable iTunes & Apple Music, `brew install --cask notunes`
 * [Clock Screen Saver](https://github.com/soffes/Clock.saver) to show a clock while in meetings. `brew install clock-saver` failed with a checksum mismatch, had to compile myself via XCode
 * [mos](https://mos.caldis.me/) to reverse the scroll direction for the mouse only. `brew install mos`
 
