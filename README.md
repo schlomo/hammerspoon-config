@@ -33,7 +33,7 @@ I found these hacks worth remembering:
 * [ZoomHider](https://lowtechguys.com/zoomhider/) to hide the Zoom screen sharing controls
 * [BetterDisplay Pro](https://betterdisplay.pro/) to control screen resolution and brightness, add dummy screens and more. `brew install 
 betterdisplay` and paid license
-
+* [coconutBattery](https://www.coconut-flavour.com/coconutbattery/) to show detailed battery charging infos. `brew install coconutbattery`
 ---
 
 * [QR Capture](https://apps.apple.com/de/app/qr-capture/id1369524274) QR scanner for screen and camera
