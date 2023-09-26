@@ -34,6 +34,8 @@ I found these hacks worth remembering:
 * [BetterDisplay Pro](https://betterdisplay.pro/) to control screen resolution and brightness, add dummy screens and more. `brew install 
 betterdisplay` and paid license
 * [coconutBattery](https://www.coconut-flavour.com/coconutbattery/) to show detailed battery charging infos. `brew install coconutbattery`
+* [pdfGear](https://www.pdfgear.com/) for free but simple PDF editing, filling, signing.
+
 ---
 
 * [QR Capture](https://apps.apple.com/de/app/qr-capture/id1369524274) QR scanner for screen and camera
