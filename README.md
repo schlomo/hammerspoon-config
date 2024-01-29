@@ -36,7 +36,6 @@ I found these hacks worth remembering:
 betterdisplay` and I paid for licence
 * [coconutBattery](https://www.coconut-flavour.com/coconutbattery/) to show detailed battery charging infos. `brew install coconutbattery`
 * [pdfGear](https://www.pdfgear.com/) for free but simple PDF editing, filling, signing.
-* [Pock](https://pock.dev/) to show the dock on the touchbar. `brew install pock`
 
 ---
 *older stuff*:
@@ -45,3 +44,137 @@ betterdisplay` and I paid for licence
 * [Display Menu](https://apps.apple.com/de/app/display-menu/id549083868)
 * [MonitorControl](https://github.com/MonitorControl/MonitorControl) to manage screen brightness and sync internal/external screen settings. `brew install monitorcontrol`
 * [Virtual Camera Missing After Microsoft Teams Update](https://support.ecamm.com/en/articles/4343963-virtual-camera-missing-after-microsoft-teams-update)
+* [Pock](https://pock.dev/) to show the dock on the touchbar. `brew install pock`
+
+## Configs
+
+### Bash
+
+goes into `~/.bash_profile`:
+
+```shell
+eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+alias ll="ls -lGF"
+
+# https://stackoverflow.com/questions/23620827/envsubst-command-not-found-on-mac-os-x-10-8
+alias envsubst=/usr/local/opt/gettext/bin/envsubst
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+alias vncviewer='/Applications/TigerVNC\ Viewer\ 1.9.0.app/Contents/MacOS/TigerVNC\ Viewer'
+
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+
+# from https://github.com/mozilla/sops/issues/304
+GPG_TTY=$(tty)
+export GPG_TTY
+
+export VISUAL="code -nw"
+
+function youtube-watch {
+    open "$(youtube-dl -g "$1")"
+}
+
+function webcam {
+    ffplay -v error  -f avfoundation -framerate 30 -video_size 1280x720 -pixel_format uyvy422 -fflags nobuffer -an -video_device_index ${1:-0} -i desk
+}
+
+source <(kubectl completion bash)
+alias k=kubectl
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# https://github.com/phiresky/ripgrep-all
+rga-fzf() {
+ RG_PREFIX="rga --files-with-matches"
+ local file
+ file="$(
+  FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+   fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+    --phony -q "$1" \
+    --bind "change:reload:$RG_PREFIX {q}" \
+    --preview-window="70%:wrap"
+ )" &&
+ echo "opening $file" &&
+ open "$file"
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# https://cloud.google.com/iap/docs/using-tcp-forwarding#increasing_the_tcp_upload_bandwidth
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
+
+function jwt { jq -R 'split(".",.)[] | try @base64d | fromjson' ; }
+
+```
+
+### Fish
+
+goes into `~/.config/fish/config.fish`:
+
+```fish
+fish_add_path /opt/homebrew/sbin /opt/homebrew/bin
+
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+end
+
+```
+
+### Git
+
+goes into `~/.gitconfig`:
+
+```toml
+# This is Git's per-user configuration file.
+[user]
+  name = Schlomo Schapiro
+  email = XXXX
+
+[core]
+  quotepath = false
+  excludesfile = /Users/schlomoschapiro/.gitignore_global
+
+[push]
+  followTags = true
+  autoSetupRemote = true
+
+[pull]
+  rebase = true
+
+[includeIf "gitdir:~/XXXX/"]
+  path = ~/XXXX/.gitconfig
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+
+[init]
+  defaultBranch = main
+
+[diff "sopsdiffer"]
+  textconv = sops -d --config /dev/null
+
+[sendpack]
+  sideband = false
+
+[tig "bind"]
+    main = = !git commit --fixup=%(commit)
+    main = <Ctrl-r> !git rebase --autosquash -i %(commit)
+
+[commit]
+  template = /Users/schlomoschapiro/.stCommitMsg
+
+```
