@@ -178,3 +178,9 @@ goes into `~/.gitconfig`:
   template = /Users/schlomoschapiro/.stCommitMsg
 
 ```
+
+## Installation Hints
+
+```
+git submodule update --init
+```
