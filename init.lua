@@ -137,22 +137,24 @@ local lastNumberOfScreens = #hs.screen.allScreens()
 function screenWatcher()
     print(table.show(hs.screen.allScreens(), "allScreens"))
     newNumberOfScreens = #hs.screen.allScreens()
-    notify(newNumberOfScreens .. " Screens")
-
-    -- FIXME: This is awful if we swap primary screen to the external display. all the windows swap around, pointlessly.
-    -- if lastNumberOfScreens ~= newNumberOfScreens then
-        if newNumberOfScreens == 1 then
-            -- notify("Screens changed to Internal Display")
-            -- hs.layout.apply(internal_display)
-            setDockPosition("left")
-        elseif newNumberOfScreens == 2 then
-            -- notify("Screens changed to Desk Display")
-            -- hs.layout.apply(desk_display)
-            setDockPosition("bottom")
-        end
-    -- end
-
-    lastNumberOfScreens = newNumberOfScreens
+    if newNumberOfScreens ~= lastNumberOfScreens then
+        notify(newNumberOfScreens .. " Screens")
+    
+        -- FIXME: This is awful if we swap primary screen to the external display. all the windows swap around, pointlessly.
+        -- if lastNumberOfScreens ~= newNumberOfScreens then
+            if newNumberOfScreens == 1 then
+                -- notify("Screens changed to Internal Display")
+                -- hs.layout.apply(internal_display)
+                setDockPosition("left")
+            elseif newNumberOfScreens == 2 then
+                -- notify("Screens changed to Desk Display")
+                -- hs.layout.apply(desk_display)
+                setDockPosition("bottom")
+            end
+        -- end
+    
+        lastNumberOfScreens = newNumberOfScreens
+    end
 end
 screenwatcherstart = hs.screen.watcher.new(screenWatcher):start()
 hs.hotkey.bind(ctrlaltcmd, 'S', screenWatcher)
@@ -203,10 +205,12 @@ spoon.MiroWindowsManager:bindHotkeys({
 })
 hs.window.animationDuration = 0
 
+--[[
 hs.loadSpoon("EjectMenu")
 spoon.EjectMenu.notify = true
 spoon.EjectMenu.never_eject = {"/Volumes/GoogleDrive"}
 spoon.EjectMenu:start()
+]]--
 
 -- microbit foot paddle input volume control
 function setInputVolume(vol)
