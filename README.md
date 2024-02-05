@@ -8,11 +8,12 @@ My [Hammerspoon](https://www.hammerspoon.org/) Configuration. Influenced from <h
 
 ## Hacks & Links
 
-I found these hacks worth remembering:
+I found these hacks and apps worth remembering:
 
 * `defaults write -app Preview PVImagePrintingScaleMode 0` to set the Preview app to scale 100% by default instead of fitting the A4 PDF into the printer margins and thereby downscaling it to 97%.
 * `defaults write -g ApplePressAndHoldEnabled -bool false` to enable key repeat with my bluetooth keyboard ([Source](https://www.howtogeek.com/267463/how-to-enable-key-repeating-in-macos/))
-* [Time Machine Editor](https://tclementdev.com/timemachineeditor/) to limit backups to run at night
+* [Secretive](https://github.com/maxgoedjen/secretive) to store SSH keys. `brew install secretive`
+* [Time Machine Editor](https://tclementdev.com/timemachineeditor/) to limit backups to run at night. `brew install --cask timemachineeditor`
 * [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12) from app store and <https://github.com/x74353/Amphetamine-Enhancer>
 * [Use local directory for GnuPG sockets](https://wiki.archlinux.org/index.php/GnuPG#IPC_connect_call_failed) to allow storing GnuPG homedir elsewhere
 * [Color Slurp](https://apps.apple.com/de/app/colorslurp/id1287239339)
@@ -33,6 +34,7 @@ I found these hacks worth remembering:
 * [BetterDisplay Pro](https://betterdisplay.pro/) to control screen resolution and brightness, add dummy screens and more. `brew install betterdisplay` and I paid for licence
 * [coconutBattery](https://www.coconut-flavour.com/coconutbattery/) to show detailed battery charging infos. `brew install coconutbattery`
 * [pdfGear](https://apps.apple.com/de/app/pdfgear-pdf-editor-reader/id6469021132) for free but simple PDF editing, filling, signing.
+* [Rectangle](https://rectangleapp.com/) provides window snapping via mouse or hotkey. `brew install rectangle`.
 
 ---
 *older stuff*:
