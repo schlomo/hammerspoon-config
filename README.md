@@ -5,6 +5,9 @@ My [Hammerspoon](https://www.hammerspoon.org/) Configuration. Influenced from <h
 ## Configuraton checklist
 
 * System emails: Run `postconf` from `gss-all` `postinst` followed by `postconf -e smtp_tls_CAfile=/etc/ssl/cert.pem` for the different cert bundle path
+* Set keyboard shortcuts: Shortcuts → App Shortcuts → All Applications:
+  * Show Help menu: `⌘#`
+  * `Lock Screen`: `⌘L`
 
 ## Hacks & Links
 
