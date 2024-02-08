@@ -1,0 +1,7 @@
+43978	0	application.com.wacom.WacomCenter.2663947.2663953
+43851	255	com.wacom.DataStoreMgr
+49643	0	application.com.wacom.UpgradeHelper.2666134.2666139.5B460E3C-44C4-480C-AFDF-EB84869861B0
+43854	0	application.com.wacom.wacomtablet.2666252.2666257
+43850	255	com.wacom.wacomtablet
+43853	0	application.com.wacom.WacomTouchDriver.2667674.2667680
+43852	255	com.wacom.IOManager

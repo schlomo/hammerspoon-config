@@ -5,9 +5,12 @@ My [Hammerspoon](https://www.hammerspoon.org/) Configuration. Influenced from <h
 ## Configuraton checklist
 
 * System emails: Run `postconf` from `gss-all` `postinst` followed by `postconf -e smtp_tls_CAfile=/etc/ssl/cert.pem` for the different cert bundle path
-* Set keyboard shortcuts: Shortcuts → App Shortcuts → All Applications:
-  * Show Help menu: `⌘#`
-  * `Lock Screen`: `⌘L`
+* Set keyboard shortcuts: Shortcuts → 
+  * Keyboard:
+    * Move focus to next window: `⌘<` (quickly switch to other window of same app)
+  * App Shortcuts → All Applications:
+    * Show Help menu: `⌘#` (search through menus via keyboard)
+    * `Lock Screen`: `⌘L` (same as on Linux :-), even though there is hardware button)
 
 ## Hacks & Links
 
