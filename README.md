@@ -138,8 +138,14 @@ source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish
 if status is-interactive
     # Commands to run in interactive sessions can go here
     test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
-end
+    if test -d (brew --prefix)"/share/fish/completions"
+        set -p fish_complete_path (brew --prefix)/share/fish/completions
+    end
 
+    if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+        set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+    end
+end
 ```
 
 ### Git
@@ -190,8 +196,18 @@ goes into `~/.gitconfig`:
 
 ```
 
+### YT DLP
+
+`brew install yt-dlp` and config goes into `~/.config/yt-dlp.conf`:
+
+```text
+# download or merge best quality of video and audio
+
+-f "bv*+ba/b"
+```
+
 ## Installation Hints
 
-```
+```shell
 git submodule update --init
 ```
