@@ -41,6 +41,7 @@ I found these hacks and apps worth remembering:
 * [coconutBattery](https://www.coconut-flavour.com/coconutbattery/) to show detailed battery charging infos. `brew install coconutbattery`
 * [pdfGear](https://apps.apple.com/de/app/pdfgear-pdf-editor-reader/id6469021132) for free but simple PDF editing, filling, signing.
 * [Rectangle](https://rectangleapp.com/) provides window snapping via mouse or hotkey. `brew install rectangle`.
+* [MacOS 15 Screen Capture Nag Remover](https://github.com/luckman212/screencapture-nag-remover)
 
 ---
 *older stuff*:
