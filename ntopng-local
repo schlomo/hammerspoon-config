@@ -1,0 +1,51 @@
+#!/bin/bash
+set -euo pipefail
+
+INTERFACE=$(route -n get default | grep interface | awk '{print $2}')
+MY_IP=$(ipconfig getifaddr "$INTERFACE")
+
+cleanup() {
+    echo "Cleaning up..."
+    sudo pkill tcpdump 2>/dev/null || true
+    docker kill ntopng || true
+    rm -f "$CONFIG"
+}
+
+
+# check sudo and tcpdump
+
+sudo tcpdump --version || {
+    echo "cannot use tcpdump via sudo"
+    exit 1
+}
+
+CONFIG=$(mktemp)
+cat > "$CONFIG" <<EOF
+local_broadcast_domain_hosts_identifier = MAC_ADDRESS
+EOF
+
+trap 'cleanup; exit' INT TERM
+
+docker run --rm -i \
+    --name ntopng \
+    -p 127.0.0.1:3000:3000 \
+    -v "$CONFIG":/etc/ntopng/ntopng.conf \
+    ntop/ntopng_arm64.dev \
+    --interface - \
+    --disable-login 1 \
+    --http-port 3000 \
+    --community \
+    --dns-mode 1 \
+    --local-networks "$MY_IP"/32 \
+    --disable-login 1 \
+    --no-promisc \
+    /etc/ntopng/ntopng.conf \
+    < <(exec sudo tcpdump -i "$INTERFACE" -U -w -) \
+    &
+
+sleep 10
+echo "*********************"
+echo Press Ctrl+C to stop
+echo Open http://localhost:3000/
+
+wait
