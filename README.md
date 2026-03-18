@@ -2,6 +2,8 @@
 
 My [Hammerspoon](https://www.hammerspoon.org/) Configuration. Influenced from <https://github.com/cmsj/hammerspoon-config> and others.
 
+*Note*: I'm currently not using Hammerspoon any more because some years ago I had a problem that it would keep locking up / stalling. As a result I had to find alternatives or make do without. I still use the other tools here and maintain the checklist and apps list below.
+
 ## Configuraton checklist
 
 * System emails: Run `postconf` from `gss-all` `postinst` followed by `postconf -e smtp_tls_CAfile=/etc/ssl/cert.pem` for the different cert bundle path
@@ -19,16 +21,14 @@ I found these hacks and apps worth remembering:
 * `defaults write -app Preview PVImagePrintingScaleMode 0` to set the Preview app to scale 100% by default instead of fitting the A4 PDF into the printer margins and thereby downscaling it to 97%.
 * `defaults write -g ApplePressAndHoldEnabled -bool false` to enable key repeat with my bluetooth keyboard ([Source](https://www.howtogeek.com/267463/how-to-enable-key-repeating-in-macos/))
 * [Secretive](https://github.com/maxgoedjen/secretive) to store SSH keys. `brew install secretive`
-* [Time Machine Editor](https://tclementdev.com/timemachineeditor/) to limit backups to run at night. `brew install --cask timemachineeditor`
-* [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12) from app store and <https://github.com/x74353/Amphetamine-Enhancer>
+* [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12) from app store and <https://github.com/x74353/Amphetamine-Enhancer> to keep the Mac active when needed
 * [Use local directory for GnuPG sockets](https://wiki.archlinux.org/index.php/GnuPG#IPC_connect_call_failed) to allow storing GnuPG homedir elsewhere
-* [Color Slurp](https://apps.apple.com/de/app/colorslurp/id1287239339)
+* [Color Slurp](https://apps.apple.com/de/app/colorslurp/id1287239339) a nice color picker
 * [noTunes](https://github.com/tombonez/noTunes) to disable iTunes & Apple Music, `brew install --cask notunes`
 * [Clock Screen Saver](https://github.com/soffes/Clock.saver) to show a clock while in meetings. `brew install clocksaver`
 * [mos](https://mos.caldis.me/) to reverse the scroll direction for the mouse only. `brew install mos`
 * [Open in Profile](https://hikmetcancelik.com/open-in-profile/) to automatically open work related links in the work Chrome profile
-* [Shottr](https://shottr.cc/) for screenshots with annotations. `brew install shottr`. It is actually free but I paid for the "Friends Club" licence because this tool is one of the tools that I use a lot.
-* [LensOCR](https://apps.apple.com/de/app/lensocr-extract-text-image/id1549961729) for screen OCR, QR/barcode and I paid for the premium licence.
+* [Shottr](https://shottr.cc/) for screenshots with annotations. `brew install shottr`. It is actually free but I paid for the "Friends Club" licence because this tool is one of the tools that I use a lot. Decodes also QR codes and has great screen OCR.
 * [Fira Code](https://github.com/tonsky/FiraCode) and Nerd fonts. `brew tap homebrew/cask-fonts && brew install --cask font-fira-code font-fira-code-nerd-font font-meslo-lg-nerd-font`
 * [Fish Shell](https://fishshell.com/) has nice UI & completions. `brew install fish`
   * Install [Fisher](https://github.com/jorgebucaran/fisher): `curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher`
@@ -41,14 +41,13 @@ I found these hacks and apps worth remembering:
 * [coconutBattery](https://www.coconut-flavour.com/coconutbattery/) to show detailed battery charging infos. `brew install coconutbattery`
 * [pdfGear](https://apps.apple.com/de/app/pdfgear-pdf-editor-reader/id6469021132) for free but simple PDF editing, filling, signing.
 * [Rectangle](https://rectangleapp.com/) provides window snapping via mouse or hotkey. `brew install rectangle`.
-* [MacOS 15 Screen Capture Nag Remover](https://github.com/luckman212/screencapture-nag-remover)
 * [Tine Wifi Analyzer](https://nolze.github.io/tiny-wifi-analyzer/) simple wifi scanner, Open Source
 * [Ice Menu Bar](https://icemenubar.app/) to hide overflowing menu bar, seems to work best at the moment, Open Source
 * [RevPDF](https://revpdf.com/) simple PDF editor, free (not OSS) and cross platform
 * [Xournal++](https://xournalpp.github.io/) handwritten notes & drawings, great with graphics tablet, OSS and cross platform
 
 ---
-*older stuff*:
+*older or obsolete stuff*:
 
 * [QR Capture](https://apps.apple.com/de/app/qr-capture/id1369524274) QR scanner for screen and camera
 * [Display Menu](https://apps.apple.com/de/app/display-menu/id549083868)
@@ -56,6 +55,9 @@ I found these hacks and apps worth remembering:
 * [Virtual Camera Missing After Microsoft Teams Update](https://support.ecamm.com/en/articles/4343963-virtual-camera-missing-after-microsoft-teams-update)
 * [Pock](https://pock.dev/) to show the dock on the touchbar. `brew install pock`
 * [Barbee](https://apps.apple.com/us/app/barbee-hide-menu-bar-items/id1548711022) to hide menu bar items that are not used and show them on demand (one time payment for VIP version). Wasn't working reliably
+* [MacOS 15 Screen Capture Nag Remover](https://github.com/luckman212/screencapture-nag-remover), haven't needed this on MacOS 26, not sure why
+* [LensOCR](https://apps.apple.com/de/app/lensocr-extract-text-image/id1549961729) for screen OCR, QR/barcode and I paid for the premium licence. Obsoleted by Shottr.
+* [Time Machine Editor](https://tclementdev.com/timemachineeditor/) to limit backups to run at night. `brew install --cask timemachineeditor`
 
 *Requires Rosetta*
 
