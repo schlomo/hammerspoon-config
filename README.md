@@ -42,7 +42,10 @@ I found these hacks and apps worth remembering:
 * [pdfGear](https://apps.apple.com/de/app/pdfgear-pdf-editor-reader/id6469021132) for free but simple PDF editing, filling, signing.
 * [Rectangle](https://rectangleapp.com/) provides window snapping via mouse or hotkey. `brew install rectangle`.
 * [MacOS 15 Screen Capture Nag Remover](https://github.com/luckman212/screencapture-nag-remover)
-* [Barbee](https://apps.apple.com/us/app/barbee-hide-menu-bar-items/id1548711022) to hide menu bar items that are not used and show them on demand (one time payment for VIP version).
+* [Tine Wifi Analyzer](https://nolze.github.io/tiny-wifi-analyzer/) simple wifi scanner, Open Source
+* [Ice Menu Bar](https://icemenubar.app/) to hide overflowing menu bar, seems to work best at the moment, Open Source
+* [RevPDF](https://revpdf.com/) simple PDF editor, free (not OSS) and cross platform
+* [Xournal++](https://xournalpp.github.io/) handwritten notes & drawings, great with graphics tablet, OSS and cross platform
 
 ---
 *older stuff*:
@@ -52,6 +55,7 @@ I found these hacks and apps worth remembering:
 * [MonitorControl](https://github.com/MonitorControl/MonitorControl) to manage screen brightness and sync internal/external screen settings. `brew install monitorcontrol`
 * [Virtual Camera Missing After Microsoft Teams Update](https://support.ecamm.com/en/articles/4343963-virtual-camera-missing-after-microsoft-teams-update)
 * [Pock](https://pock.dev/) to show the dock on the touchbar. `brew install pock`
+* [Barbee](https://apps.apple.com/us/app/barbee-hide-menu-bar-items/id1548711022) to hide menu bar items that are not used and show them on demand (one time payment for VIP version). Wasn't working reliably
 
 *Requires Rosetta*
 
