@@ -42,7 +42,7 @@ I found these hacks and apps worth remembering:
 * [pdfGear](https://apps.apple.com/de/app/pdfgear-pdf-editor-reader/id6469021132) for free but simple PDF editing, filling, signing.
 * [Rectangle](https://rectangleapp.com/) provides window snapping via mouse or hotkey. `brew install rectangle`.
 * [Tine Wifi Analyzer](https://nolze.github.io/tiny-wifi-analyzer/) simple wifi scanner, Open Source
-* [Ice Menu Bar](https://icemenubar.app/) to hide overflowing menu bar, seems to work best at the moment, Open Source
+* [Thaw](https://github.com/stonerl/Thaw) menu bar manager, fork of Ice Menu Bar, Open Source
 * [RevPDF](https://revpdf.com/) simple PDF editor, free (not OSS) and cross platform
 * [Xournal++](https://xournalpp.github.io/) handwritten notes & drawings, great with graphics tablet, OSS and cross platform
 
@@ -58,6 +58,7 @@ I found these hacks and apps worth remembering:
 * [MacOS 15 Screen Capture Nag Remover](https://github.com/luckman212/screencapture-nag-remover), haven't needed this on MacOS 26, not sure why
 * [LensOCR](https://apps.apple.com/de/app/lensocr-extract-text-image/id1549961729) for screen OCR, QR/barcode and I paid for the premium licence. Obsoleted by Shottr.
 * [Time Machine Editor](https://tclementdev.com/timemachineeditor/) to limit backups to run at night. `brew install --cask timemachineeditor`
+* [Ice Menu Bar](https://icemenubar.app/) to hide overflowing menu bar, seems to work best at the moment, Open Source (abandoned, using Thaw instead)
 
 *Requires Rosetta*
 
