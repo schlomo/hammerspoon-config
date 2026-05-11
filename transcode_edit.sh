@@ -10,9 +10,9 @@
 # the need to save and re-read the large intermediate file.
 #
 # Usage:
-# 1. Save this file as `prepare_footage.sh`.
-# 2. Make it executable: chmod +x prepare_footage.sh
-# 3. Run with your video file: ./prepare_footage.sh your_video.mp4
+# 1. Save this file as `transcode_edit.sh`.
+# 2. Make it executable: chmod +x transcode_edit.sh
+# 3. Run with your video file: ./transcode_edit.sh your_video.mp4
 
 # --- Configuration ---
 
