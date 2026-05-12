@@ -9,6 +9,7 @@ from media_common import ffprobe_json, human_size, require_tools, run
 
 BITRATE_MULTIPLIER = 2.5
 EDIT_FRIENDLY_FORMAT = "mov"
+EDIT_FRIENDLY_SUFFIX = ".edit"
 PROXY_SUFFIX = ".proxy"
 PROXY_FORMAT = "mp4"
 PROXY_WIDTH = "960"
@@ -48,9 +49,10 @@ def main() -> None:
     if not input_file.is_file():
         raise SystemExit(f"Error: input file not found: {input_file}")
 
-    base_name = input_file.stem
-    edit_friendly = Path(f"{base_name}.{EDIT_FRIENDLY_FORMAT}")
-    proxy = Path(f"{base_name}{PROXY_SUFFIX}.{PROXY_FORMAT}")
+    edit_friendly = input_file.with_name(
+        f"{input_file.stem}{EDIT_FRIENDLY_SUFFIX}.{EDIT_FRIENDLY_FORMAT}"
+    )
+    proxy = edit_friendly.with_name(f"{edit_friendly.stem}{PROXY_SUFFIX}.{PROXY_FORMAT}")
 
     probe = ffprobe_json(input_file, stream_selector="v:0")
     video_stream = pick_video_stream(probe)
@@ -67,9 +69,9 @@ def main() -> None:
     target_bitrate = round(source_bitrate * BITRATE_MULTIPLIER)
 
     print("--- Starting Footage Preparation (Single-Pass) ---")
-    print(f"Input: {input_file}")
-    print(f"Target bitrate (edit-friendly): {target_bitrate // 1000} kb/s")
-    print(f"Target bitrate (proxy): {PROXY_BITRATE}")
+    print(f"Input: {input_file} {source_bitrate // 1000} kb/s")
+    print(f"Edit-Friendly: {edit_friendly} {target_bitrate // 1000} kb/s")
+    print(f"Proxy: {proxy} {PROXY_BITRATE}")
     print("--------------------------------------------------")
 
     cmd: list[str | Path] = [

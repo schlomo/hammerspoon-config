@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from media_common import ffprobe_json, require_tools, run
+from media_common import ffprobe_json, require_tools, run, human_size
 
 OUTPUT_EXT = "wav"
 OUTPUT_CODEC = "pcm_s24le"
@@ -119,6 +119,8 @@ def main() -> None:
 
     print("--- Complete ---")
     print(f"Created {len(expected_files)} file(s).")
+    for path in expected_files:
+        print(f"  - {path} {human_size(path)}")
 
 
 if __name__ == "__main__":

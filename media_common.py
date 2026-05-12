@@ -65,4 +65,4 @@ def human_size(path: Path) -> str:
     while value >= 1024 and idx < len(units) - 1:
         value /= 1024
         idx += 1
-    return f"{value:.1f}{units[idx]}"
+    return f"{value:.1f} {units[idx]}"
