@@ -45,6 +45,7 @@ I found these hacks and apps worth remembering:
 * [Thaw](https://github.com/stonerl/Thaw) menu bar manager, fork of Ice Menu Bar, Open Source
 * [RevPDF](https://revpdf.com/) simple PDF editor, free (not OSS) and cross platform
 * [Xournal++](https://xournalpp.github.io/) handwritten notes & drawings, great with graphics tablet, OSS and cross platform
+* [Camera Controller](https://github.com/itaybre/CameraController) to control webcam and microphone, OSS and cross platform. `brew install cameracontroller`
 
 ---
 *older or obsolete stuff*:
@@ -59,10 +60,10 @@ I found these hacks and apps worth remembering:
 * [LensOCR](https://apps.apple.com/de/app/lensocr-extract-text-image/id1549961729) for screen OCR, QR/barcode and I paid for the premium licence. Obsoleted by Shottr.
 * [Time Machine Editor](https://tclementdev.com/timemachineeditor/) to limit backups to run at night. `brew install --cask timemachineeditor`
 * [Ice Menu Bar](https://icemenubar.app/) to hide overflowing menu bar, seems to work best at the moment, Open Source (abandoned, using Thaw instead)
+* [Webcam Settings](https://apps.apple.com/app/webcam-settings/id533696630), I'm using Camera Controller instead
 
 *Requires Rosetta*
 
-* [Webcam Settings](https://apps.apple.com/app/webcam-settings/id533696630)
 * [QR Journal](https://apps.apple.com/de/app/qr-journal/id483820530) QR scanner for screen and camera
 * [t2m Timer](https://apps.apple.com/de/app/t2m-timer/id1487946377) countdown timer
 
